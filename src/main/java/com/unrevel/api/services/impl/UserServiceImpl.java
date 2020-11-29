@@ -4,6 +4,7 @@ import com.unrevel.api.dto.Response;
 import com.unrevel.api.dto.UserRegDto;
 import com.unrevel.api.dto.UserRespondDto;
 import com.unrevel.api.enums.SecurityRole;
+import com.unrevel.api.model.Profile;
 import com.unrevel.api.model.Role;
 import com.unrevel.api.model.User;
 import com.unrevel.api.repository.UserRepository;
@@ -14,7 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import static com.unrevel.api.utill.ResponseBuilder.*;
+import static com.unrevel.api.utill.ResponseBuilder.getFailureResponse;
+import static com.unrevel.api.utill.ResponseBuilder.getSuccessResponse;
 import static com.unrevel.api.utill.SecurityConstants.*;
 
 @Service
@@ -53,7 +55,9 @@ public class UserServiceImpl implements UserService {
              }
 
             var saveUser = userRepository.save(user);
-            var userProfileInfo = userRegDto.getUserProfileInfo();
+            var dto = userRegDto.getProfileDto();
+            var userProfileInfo = modelMapper.map(dto, Profile.class);
+
             if (userProfileInfo != null){
                 userProfileInfo.setUser(saveUser);
                 profileService.create(userProfileInfo);

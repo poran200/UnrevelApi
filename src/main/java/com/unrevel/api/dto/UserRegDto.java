@@ -1,7 +1,5 @@
 package com.unrevel.api.dto;
 
-import com.unrevel.api.model.Profile;
-import com.unrevel.api.model.Role;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -21,6 +19,5 @@ public class UserRegDto {
     private String password;
     @NotEmpty(message = "full name is require")
     private String fullName;
-
-    private Profile userProfileInfo;
+    private ProfileDto profileDto;
 }
