@@ -21,6 +21,8 @@ class DbInit {
     RoleRepository roleRepository;
     @PostConstruct
     private void postConstruct() {
+        userRepository.deleteAll();
+        roleRepository.deleteAll();
         User user = new User();
       user.setUserName("admin");
       user.setPassword(passwordEncoder.encode("admin"));
