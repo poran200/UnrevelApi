@@ -16,7 +16,12 @@
 
     <properties>
         <java.version>11</java.version>
+        <source>11</source>
+        <target>11</target>
+        <testSource>11</testSource>
+        <testTarget>11</testTarget>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -57,10 +62,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
