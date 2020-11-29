@@ -6,20 +6,27 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode()
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RelevantQsAns extends BaseEntity implements Serializable {
+public class RelevantQsAns  implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @OneToOne
     private RelevantQuestion question;
     private String answer;
     @ManyToOne
     @JsonIgnoreProperties({"relevantQsAns"})
     private Profile profile;
+
+    public RelevantQsAns(RelevantQuestion question, String answer, Profile profile) {
+        this.question = question;
+        this.answer = answer;
+        this.profile = profile;
+    }
 }

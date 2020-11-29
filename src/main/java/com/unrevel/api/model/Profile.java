@@ -15,9 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class Profile  extends BaseEntity implements Serializable {
-
+@EqualsAndHashCode()
+public class Profile   implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(nullable = false)
     private String profileImageUrl;
     @ElementCollection
